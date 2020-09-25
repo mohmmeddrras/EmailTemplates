@@ -1,0 +1,101 @@
+<aura:component controller="EmailController" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+     <aura:handler name="cmpEvent" event="c:getid" action="{!c.handleComponentEvent}"/>
+    <aura:attribute name="options" type="List" default=""/>
+    <aura:attribute name="templatedata" type="List" default=""/>
+    <aura:attribute name="body" type="String" default=""/>
+    <aura:attribute name="attID" type="String" default=""/>
+    <aura:attribute name="subject" type="String" default=""/>
+    <aura:attribute name="Emailadd" type="String" default=""/>
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:attribute name="sendEmail" type="boolean" default="false"/>
+    <aura:handler name="init" value="this" action="{!c.doInit}"/>
+    
+    <div class="slds-theme_default">
+        <div class="slds-text-heading_large slds-text-align_center">
+    <h1>Email Templates</h1>
+        </div>
+    <lightning:combobox aura:id="combobox" name="Email Templates"  value="Email Templates" placeholder="Select Email Templates" 
+                        options="{! v.options }" onchange="{! c.handleChange }"/>
+    <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
+        <aura:if isTrue="{!v.isOpen}">
+ 
+           
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Email Template</h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                      <ui:inputTextArea aura:id="EmailTemp" value="{!v.body}" rows="10"/>
+                      
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" 
+                                          label="Cancel"
+                                          title="Cancel"
+                                          onclick="{! c.closeModel }"/>
+                        <lightning:button variant="brand" 
+                                          label="Send Email"
+                                          title="Send Email"
+                                          onclick="{! c.ShowSendEmail}"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+    
+          <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
+        <aura:if isTrue="{!v.sendEmail}">
+ 
+           
+            <!--###### MODAL BOX Start######--> 
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- ###### MODAL BOX HEADER Start ######-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{! c.closeModel }"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Email Template</h2>
+                    </header>
+                    <!--###### MODAL BOX BODY Part Start######-->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                       <lightning:input type="email" name="email" placeholder="youraddress@company.com" label="Email address" value="{!v.Emailadd}" />
+                       <lightning:input  name="input1" label="Subject" value ="{!v.subject}" />
+                         <br/>
+                        
+                       <c:SignaturePad></c:SignaturePad>
+                        
+                    </div>
+                    <!--###### MODAL BOX FOOTER Part Start ######-->
+                    <footer class="slds-modal__footer">
+                        <lightning:button variant="neutral" 
+                                          label="Back"
+                                          title="Back"
+                                          onclick="{! c.Back }"/>
+                        <lightning:button variant="brand" 
+                                          label="Send Email"
+                                          title="Send Email"
+                                          onclick="{! c.sendEmailout}"/>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            <!--###### MODAL BOX Part END Here ######-->
+            
+        </aura:if>
+    </div>
+</aura:component>

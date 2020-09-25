@@ -1,0 +1,12 @@
+<aura:component controller="SignatureCtr"  implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <ltng:require afterScriptsLoaded="{!c.Init}"/>
+     <aura:registerEvent name="cmpEvent" type="c:getid"/>
+    <div style="text-align: center;">
+        <h1>Sign Here</h1>
+        <canvas aura:id="can" style=" border:2px solid #ddd;background: transparent;"></canvas>
+    </div>
+    <div style="text-align: center;margin: 7px;">
+        <button class="slds-button slds-button_brand" onclick="{!c.erase}">Clear</button>
+        <button class="slds-button slds-button_brand" onclick="{!c.save}">Save</button>
+    </div>
+</aura:component>
