@@ -117,12 +117,15 @@
     },
     saveHelper:function(component, event, helper){
         var pad=component.find('can').getElement();
+        var emaildata=component.get("v.cbody");
+        console.log(emaildata);
         var dataUrl = pad.toDataURL();
         console.log('dataUrl:='+dataUrl);
         var strDataURI=dataUrl.replace(/^data:image\/(png|jpg);base64,/, "");
         var action = component.get("c.saveSignature");
         action.setParams({
-            signatureBody : strDataURI
+            signatureBody : strDataURI,
+            emaildata  : emaildata
         });
         action.setCallback(this,function(response){
             var state = response.getState();

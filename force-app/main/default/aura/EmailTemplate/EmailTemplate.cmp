@@ -77,7 +77,8 @@
                        <lightning:input  name="input1" label="Subject" value ="{!v.subject}" />
                          <br/>
                         
-                       <c:SignaturePad></c:SignaturePad>
+                       <c:SignaturePad cbody="{!v.body}"></c:SignaturePad>
+                        
                         
                     </div>
                     <!--###### MODAL BOX FOOTER Part Start ######-->

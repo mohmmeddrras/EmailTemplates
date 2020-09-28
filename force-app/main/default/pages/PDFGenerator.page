@@ -1,0 +1,10 @@
+<apex:page controller="DataDisplayController" >
+    
+    {!PDFData}
+    <br/>
+    
+     <apex:repeat value="{!att}" var="att">
+     <apex:image url="{!URLFOR($Action.Attachment.Download, att.id)}"/>
+    </apex:repeat>
+          
+</apex:page>

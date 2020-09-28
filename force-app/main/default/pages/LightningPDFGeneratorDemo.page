@@ -3,7 +3,7 @@
     <apex:includeLightning />
     
 	<!-- Page code -->
-    <apex:form>
+    <apex:form >
 		<apex:inputhidden id="hidData" value="{!PDFData}"/>
     
     	<apex:actionfunction name="jsGeneratePDF" action="{!downloadPDF}" />

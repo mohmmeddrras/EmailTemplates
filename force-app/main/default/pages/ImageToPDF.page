@@ -1,0 +1,15 @@
+<apex:page id="testPage" applyBodyTag="false" renderAs="pdf"
+           standardStylesheets="false"
+           applyHtmlTag="false" showHeader="false" controller="DataDisplayController">
+          
+    
+       {!$CurrentPage.parameters.data}
+    
+       <br/>
+       <br/>
+       <br/>
+        Signature
+    <br/>
+    <img src="/servlet/servlet.FileDownload?file={!$CurrentPage.parameters.FileId}"/>
+     <br/>
+</apex:page>
